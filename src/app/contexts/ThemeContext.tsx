@@ -3,6 +3,7 @@ import { createContext, useContext, useEffect, useState } from 'react';
 type Theme = 'dark' | 'light' | 'system';
 
 type ThemeProviderProps = {
+  // eslint-disable-next-line no-undef
   children: React.ReactNode;
   defaultTheme?: Theme;
   storageKey?: string;
@@ -48,11 +49,12 @@ export function ThemeProvider({
     root.classList.add(theme);
   }, [theme]);
 
+  // eslint-disable-next-line react/jsx-no-constructed-context-values
   const value = {
     theme,
-    setTheme: (theme: Theme) => {
-      localStorage.setItem(storageKey, theme);
-      setTheme(theme);
+    setTheme: (newTheme: Theme) => {
+      localStorage.setItem(storageKey, newTheme);
+      setTheme(newTheme);
     },
   };
 
