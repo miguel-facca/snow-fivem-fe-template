@@ -1,15 +1,16 @@
 import { MutableRefObject, useEffect, useRef } from 'react';
 
+// eslint-disable-next-line @typescript-eslint/naming-convention
 interface NuiMessageData<T = unknown> {
   action: string;
-  data: T;
+  payload: T;
 }
 
 type NuiHandlerSignature<T> = (data: T) => void;
 
 export const useNuiMessage = <T = never>(
   action: string,
-  handler: (data: T) => void,
+  handler: (payload: T) => void,
 ) => {
   const savedHandler: MutableRefObject<NuiHandlerSignature<T>> = useRef(
     () => {},
@@ -21,11 +22,11 @@ export const useNuiMessage = <T = never>(
 
   useEffect(() => {
     const eventListener = (event: MessageEvent<NuiMessageData<T>>) => {
-      const { action: eventAction, data } = event.data;
+      const { action: eventAction, payload } = event.data;
 
       if (savedHandler.current) {
         if (eventAction === action) {
-          savedHandler.current(data);
+          savedHandler.current(payload);
         }
       }
     };
