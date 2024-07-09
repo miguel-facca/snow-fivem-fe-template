@@ -1,7 +1,6 @@
 import { createContext, useContext, useState } from 'react';
 
 import { useNuiMessage } from '@app/hooks/useNuiMessage';
-import { isEnvBrowser } from '@app/utils/misc';
 
 type VisibilityProviderProps = {
   // eslint-disable-next-line no-undef
@@ -19,7 +18,7 @@ const VisibilityProviderContext = createContext<VisibilityProviderState>({
 });
 
 export function VisibilityProvider({ children }: VisibilityProviderProps) {
-  const [visible, setVisible] = useState<boolean>(isEnvBrowser());
+  const [visible, setVisible] = useState<boolean>(false);
 
   useNuiMessage('setVisible', setVisible);
 
@@ -40,7 +39,7 @@ export const useVisibility = () => {
   const context = useContext(VisibilityProviderContext);
 
   if (context === undefined)
-    throw new Error('useVisibility must be used within a ThemeProvider');
+    throw new Error('useVisibility must be used within a VisibilityProvider');
 
   return context;
 };
