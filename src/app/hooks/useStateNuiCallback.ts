@@ -6,7 +6,6 @@ const resourceName = (window as any).GetParentResourceName
   ? (window as any).GetParentResourceName()
   : 'zs-boilerplate';
 
-// eslint-disable-next-line @typescript-eslint/naming-convention
 interface NuiCallbackResponse<T> {
   result: T | null;
   isLoading: boolean;

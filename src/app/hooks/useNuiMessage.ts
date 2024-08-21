@@ -1,6 +1,5 @@
 import { MutableRefObject, useEffect, useRef } from 'react';
 
-// eslint-disable-next-line @typescript-eslint/naming-convention
 interface NuiMessageData<T = unknown> {
   action: string;
   payload: T;

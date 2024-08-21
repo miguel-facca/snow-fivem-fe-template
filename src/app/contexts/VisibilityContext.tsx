@@ -11,7 +11,6 @@ import { useNuiMessage } from '@app/hooks/useNuiMessage';
 import { isEnvBrowser } from '@app/utils/misc';
 
 type VisibilityProviderProps = {
-  // eslint-disable-next-line no-undef
   children: React.ReactNode;
 };
 
@@ -54,7 +53,6 @@ export function VisibilityProvider({ children }: VisibilityProviderProps) {
       if (!canCloseUi) return;
 
       if (event.key === 'Escape') {
-        console.log('aq');
         fetchHideFrame();
       }
     };
@@ -68,11 +66,10 @@ export function VisibilityProvider({ children }: VisibilityProviderProps) {
     }
   }, [canCloseUi, visible, fetchHideFrame]);
 
-  useNuiMessage('setVisible', setVisible);
+  useNuiMessage<boolean>('setVisible', setVisible);
 
   return (
     <VisibilityProviderContext.Provider
-      // eslint-disable-next-line react/jsx-no-constructed-context-values
       value={{
         visible,
         setVisible,
