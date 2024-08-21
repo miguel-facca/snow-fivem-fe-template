@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import { lazy } from 'react';
 
 export const lazyLoad = <T extends Record<string, any>, U extends keyof T>(

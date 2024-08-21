@@ -1,11 +1,17 @@
-const { Home } = lazyLoad(() => import('@views/pages/Home'));
-const { CreateUser } = lazyLoad(() => import('@views/pages/CreateUser'));
+import { Suspense } from 'react';
+import { Route, Routes } from 'react-router-dom';
+
+import { lazyLoad } from '@app/utils/lazyLoad';
+import { isEnvBrowser } from '@app/utils/misc';
 
 import { routes } from './routes';
 
-import { Route, Routes } from 'react-router-dom';
-import { Suspense } from 'react';
-import { lazyLoad } from '@app/utils/lazyLoad';
+const { Home } = lazyLoad(() => import('@views/pages/Home'));
+const { CreateUser } = lazyLoad(() => import('@views/pages/CreateUser'));
+
+if (isEnvBrowser()) {
+  window.postMessage({ action: 'setVisible', data: true });
+}
 
 export function Router() {
   return (

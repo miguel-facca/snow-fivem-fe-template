@@ -4,17 +4,12 @@ const resourceName = (window as any).GetParentResourceName
   ? (window as any).GetParentResourceName()
   : 'zs-boilerplate';
 
-export async function useNuiCallback<CallbackResultType>({
-  path,
-  data,
-  mockData,
-  delay,
-}: {
-  path: string;
-  data?: any;
-  mockData: CallbackResultType;
-  delay?: number;
-}): Promise<CallbackResultType> {
+export async function useNuiCallback<CallbackResultType>(
+  path: string,
+  data?: any,
+  mockData?: CallbackResultType,
+  delay?: number,
+): Promise<CallbackResultType> {
   if (isEnvBrowser() && mockData) {
     if (delay) {
       await sleep(delay);

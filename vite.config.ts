@@ -9,7 +9,7 @@ export default defineConfig({
   plugins: [react()],
   server: {
     open: true,
-    host: 'snowzitcho', // if not exists add on hosts file: 127.0.0.1 -> snowzitcho
+    host: '127.0.0.1', // if not exists add on hosts file: 127.0.0.1 -> snowzitcho
     port: 1904,
   },
   resolve: {

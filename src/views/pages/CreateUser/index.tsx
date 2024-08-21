@@ -1,3 +1,3 @@
 export function CreateUser() {
-  return <div>CreateUser </div>;
+  return <div className="text-mainColor">CreateUser </div>;
 }
